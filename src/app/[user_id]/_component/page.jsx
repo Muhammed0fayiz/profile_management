@@ -8,18 +8,11 @@ import CaseInsightsProjects from '@/components/projects';
 import VisualResume from '@/components/visual_resume';
 import Footer from '@/components/footer';
 import { axiosInstanceMultipart } from '../../../../shared/axiousintance';
-
+import { useRouter } from 'next/navigation';
 const Profile_details = () => {
   const { user_id } = useParams();
   const [user, setUser] = useState(null);
-
-  const sections = [
-    "Core Skills & Technical Proficiencies",
-    "Professional Journey & Internship Roles",
-    "Case Insights & Key Projects",
-    "Learning & Academic Milestones",
-    "Endorsements from Mentors & Peers"
-  ];
+const router = useRouter()
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -39,6 +32,7 @@ const Profile_details = () => {
   return (
     <>
       <Navbar />
+
 
       <div className="bg-gradient-to-r from-orange-500 to-red-500 px-8 py-6 h-50 mt-2.5 relative">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -78,11 +72,25 @@ const Profile_details = () => {
       </div>
 
       <div className="flex justify-center mt-6">
-        <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full flex items-center space-x-2 transition-all duration-200 shadow-lg hover:shadow-xl">
+       <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full flex items-center space-x-2 transition-all duration-200 shadow-lg hover:shadow-xl">
           <Play size={18} />
           <span className="font-medium">Watch my Visual Resume Now</span>
         </button>
       </div>
+
+<div className="flex justify-center mt-6">
+  <button
+    onClick={() => router.push('/')}
+    className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-full flex items-center space-x-2 transition-all duration-200 shadow hover:shadow-md"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" className="h-4 w-4" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+    </svg>
+    <span className="font-medium">Go to Home</span>
+  </button>
+</div>
+
+
 
       <div className="mt-16 px-8 pb-12">
  
