@@ -11,3 +11,6 @@ export const forthLogo = {
 export const fifthLogo = {
   img: "/images/logo5.png"
 };
+export const profile = {
+  img: "/images/istockphoto-1392112495-1024x1024.jpg"
+}

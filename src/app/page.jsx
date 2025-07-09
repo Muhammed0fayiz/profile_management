@@ -1,7 +1,8 @@
 
 import Navbar from '@/components/navbar'
 import ProfileCardsGrid from '@/components/profile_card'
-
+import { firstLogo, secLogo, forthLogo, fifthLogo,profile} from "@/datas/navbar";
+import Image from "next/image";
 
 import React from 'react'
 
