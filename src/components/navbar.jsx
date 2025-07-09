@@ -46,11 +46,11 @@ const Navbar = () => {
           >
             PRME
           </h1>
-          <p className="text-[10px] tracking-wider ml-1 text-gray-800 -mt-1.5">
+          <p className="text-[10px] tracking-wider ml-0.5 text-gray-800 -mt-1.5">
             Principles for Responsible
           </p>
 
-          <p className="text-[10px] tracking-wider ml-1 text-gray-800 -mt-1.5">
+          <p className="text-[10px] tracking-wider ml-0.5 text-gray-800 -mt-1.5">
             Management Education
           </p>
         </div>
