@@ -21,7 +21,7 @@ export default function AddFullForm() {
     about: '',
     gitLink: '',
     linkedinLink: '',
-    skills: [], // ✅ array for dynamic skills
+    skills: [],
   });
 
   const [newSkill, setNewSkill] = useState('');
@@ -159,6 +159,7 @@ export default function AddFullForm() {
         <input name="name" onChange={handleChange} value={formData.name} placeholder="Name" className="border p-2 rounded" required />
         <input name="age" type="number" onChange={handleChange} value={formData.age} placeholder="Age" className="border p-2 rounded" required />
 
+        {/* ✅ Profile Image */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">Profile Image</label>
           <input name="image" type="file" accept="image/*" onChange={handleFileChange} className="border p-2 rounded w-full" required />
@@ -170,13 +171,43 @@ export default function AddFullForm() {
           )}
         </div>
 
-        <input name="heOrShe" onChange={handleChange} value={formData.heOrShe} placeholder="He or She" className="border p-2 rounded" required />
+        {/* ✅ Gender Radio Buttons */}
+      <div>
+  <label className="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+  <div className="flex gap-4">
+    <label className="flex items-center gap-1">
+      <input
+        type="radio"
+        name="heOrShe"
+        value="Male"
+        checked={formData.heOrShe === 'Male'}
+        onChange={handleChange}
+        className="accent-blue-600"
+        required
+      />
+      <span>Male</span>
+    </label>
+    <label className="flex items-center gap-1">
+      <input
+        type="radio"
+        name="heOrShe"
+        value="Female"
+        checked={formData.heOrShe === 'Female'}
+        onChange={handleChange}
+        className="accent-pink-600"
+        required
+      />
+      <span>Female</span>
+    </label>
+  </div>
+</div>
+
+
         <input name="email" type="email" onChange={handleChange} value={formData.email} placeholder="Email" className="border p-2 rounded" required />
         <input name="phone" onChange={handleChange} value={formData.phone} placeholder="Phone" className="border p-2 rounded" required />
 
         <h3 className="text-lg font-semibold text-gray-700 mt-4">Project Details</h3>
         <input name="projectName" onChange={handleChange} value={formData.projectName} placeholder="Project Name" className="border p-2 rounded" required />
-
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">Project Image</label>
           <input name="projectImage" type="file" accept="image/*" onChange={handleFileChange} className="border p-2 rounded w-full" required />
@@ -187,12 +218,10 @@ export default function AddFullForm() {
             </div>
           )}
         </div>
-
         <textarea name="projectDescription" onChange={handleChange} value={formData.projectDescription} placeholder="Project Description" rows={3} className="border p-2 rounded" required />
 
         <h3 className="text-lg font-semibold text-gray-700 mt-4">Case Study Details</h3>
         <input name="caseStudyName" onChange={handleChange} value={formData.caseStudyName} placeholder="Case Study Name" className="border p-2 rounded" required />
-
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">Case Study Image</label>
           <input name="caseStudyImage" type="file" accept="image/*" onChange={handleFileChange} className="border p-2 rounded w-full" required />
@@ -203,7 +232,6 @@ export default function AddFullForm() {
             </div>
           )}
         </div>
-
         <textarea name="caseStudyDescription" onChange={handleChange} value={formData.caseStudyDescription} placeholder="Case Study Description" rows={3} className="border p-2 rounded" required />
 
         <h3 className="text-lg font-semibold text-gray-700 mt-4">Links</h3>
@@ -218,11 +246,11 @@ export default function AddFullForm() {
             </div>
           )}
         </div>
+
         <input name="gitLink" onChange={handleChange} value={formData.gitLink} placeholder="GitHub Link" className="border p-2 rounded" />
         <input name="linkedinLink" onChange={handleChange} value={formData.linkedinLink} placeholder="LinkedIn Link" className="border p-2 rounded" />
         <textarea name="about" onChange={handleChange} value={formData.about} placeholder="About" rows={3} className="border p-2 rounded" />
 
-        {/* ✅ Skills section with tags */}
         <h3 className="text-lg font-semibold text-gray-700 mt-4">Skills</h3>
         <div className="flex gap-2">
           <input
