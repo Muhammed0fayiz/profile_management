@@ -35,13 +35,14 @@ export default function ProfileCard() {
                   <div className="h-1/2 bg-gray-100 w-full absolute bottom-0 left-0 px-4 sm:px-6">
                     <div className="flex justify-center">
                       <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full border-4 border-white overflow-hidden shadow-md -mt-14 sm:-mt-16 lg:-mt-20 bg-gradient-to-br from-orange-200 to-orange-400 flex items-center justify-center">
-                        <Image
-                          src={user.profileImage ? `http://localhost:5000/public${user.profileImage}` : '/placeholder.jpg'}
-                          alt="Profile Image"
-                          width={128}
-                          height={128}
-                          className="w-full h-full object-cover rounded-full relative z-10"
-                        />
+                   <Image
+  src={user.image ? user.image : '/placeholder.jpg'}
+  alt="Profile Image"
+  width={128}
+  height={128}
+  className="w-full h-full object-cover rounded-full relative z-10"
+/>
+
                       </div>
                     </div>
 

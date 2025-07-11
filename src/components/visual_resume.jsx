@@ -12,18 +12,15 @@ export default function VisualResume({ user }) {
 
       <div className="relative w-full max-w-5xl aspect-video rounded-2xl overflow-hidden shadow-xl">
 
-        <img
-          src={
-            user?.youtubeImage
-              ? `http://localhost:5000/public${user.youtubeImage}`
-              : '/your-thumbnail.png'
-          }
-          alt="Visual Resume"
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            e.target.src = '/your-thumbnail.png';
-          }}
-        />
+      <img
+  src={user?.youtubeImage ? user.youtubeImage : '/your-thumbnail.png'}
+  alt="Visual Resume"
+  className="w-full h-full object-cover"
+  onError={(e) => {
+    e.target.src = '/your-thumbnail.png';
+  }}
+/>
+
 
         <div className="absolute bottom-4 right-4 flex items-center space-x-2">
           <a

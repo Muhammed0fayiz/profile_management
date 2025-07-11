@@ -8,20 +8,15 @@ export default function CaseInsightsProjects({ user }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
-  // 🔍 Console log the user data
   useEffect(() => {
     console.log("📦 Received user object:", user);
-    
-    // Debug case studies structure
-    if (user?.caseStudies && user.caseStudies.length > 0) {
-      console.log("📋 Case Studies structure:", user.caseStudies[0]);
-      console.log("📋 Case Studies properties:", Object.keys(user.caseStudies[0]));
+
+    if (user?.caseStudy && user.caseStudy.length > 0) {
+      console.log("📋 Case Studies structure:", user.caseStudy[0]);
     }
-    
-    // Debug projects structure  
-    if (user?.projects && user.projects.length > 0) {
-      console.log("🚀 Projects structure:", user.projects[0]);
-      console.log("🚀 Projects properties:", Object.keys(user.projects[0]));
+
+    if (user?.project && user.project.length > 0) {
+      console.log("🚀 Projects structure:", user.project[0]);
     }
   }, [user]);
 
@@ -31,9 +26,7 @@ export default function CaseInsightsProjects({ user }) {
   };
 
   const currentData =
-    activeTab === 'Case Studies'
-      ? user?.caseStudies || []
-      : user?.projects || [];
+    activeTab === 'Case Studies' ? user?.caseStudy || [] : user?.project || [];
 
   const totalPages = Math.ceil(currentData.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -48,29 +41,11 @@ export default function CaseInsightsProjects({ user }) {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
-  // Helper function to get the correct property names based on active tab
-  const getItemName = (item) => {
-    if (activeTab === 'Projects') {
-      return item.projectName || item.name;
-    } else {
-      // For case studies, try common property names
-      return item.name || item.caseStudyName || item.title || item.projectName;
-    }
-  };
-
-  const getItemImage = (item) => {
-    if (activeTab === 'Projects') {
-      return item.projectImage || item.image;
-    } else {
-      // For case studies, try common property names
-      return item.image || item.caseStudyImage || item.thumbnail || item.projectImage;
-    }
-  };
+  const getItemName = (item) => item.name || 'Untitled';
+  const getItemImage = (item) => item.image || '';
 
   return (
-  
-      <div className="max-w-6xl mx-auto p-6 min-h-[50vh]">
-
+    <div className="max-w-6xl mx-auto p-6 min-h-[50vh]">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
           <h1 className="text-4xl font-bold text-gray-900 mb-1">Case Insights &</h1>
@@ -102,29 +77,33 @@ export default function CaseInsightsProjects({ user }) {
         {currentItems.map((item, index) => {
           const itemName = getItemName(item);
           const itemImage = getItemImage(item);
-          
+
           return (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            >
               <div className="relative">
                 <img
                   src={
                     itemImage
-                      ? `http://localhost:5000/public${itemImage}`
-                      : `https://via.placeholder.com/300x200/3B82F6/FFFFFF?text=${encodeURIComponent(itemName || 'No Name')}`
+                      ? itemImage
+                      : `https://via.placeholder.com/300x200/3B82F6/FFFFFF?text=${encodeURIComponent(
+                          itemName
+                        )}`
                   }
-                  alt={itemName || 'Project'}
+                  alt={itemName}
                   className="w-full h-48 object-cover"
                   onError={(e) => {
-                    e.target.src = `https://via.placeholder.com/300x200/3B82F6/FFFFFF?text=${encodeURIComponent(itemName || 'No Name')}`;
+                    e.target.src = `https://via.placeholder.com/300x200/3B82F6/FFFFFF?text=${encodeURIComponent(
+                      itemName
+                    )}`;
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>
               <div className="p-6">
-             
                 <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">{itemName}</h3>
-
-               
               </div>
             </div>
           );
